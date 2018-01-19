@@ -1,0 +1,54 @@
+name: expo-push
+description: Expo.io push notification backend
+version: 1.0.0
+keywords:
+  - expo
+  - push
+  - notification
+  - notifications
+
+classes:
+  expoDevice:
+    - name: expoPushToken
+      type: string
+      filter_index: true
+    - name: user
+      type: reference
+      target: user
+      filter_index: true
+endpoints:
+  register:
+    description: Register expo device for push notifications
+    file: register.js
+    parameters:
+      token:
+        type: string
+        description: token sent from device
+        example: token
+  push:
+    description: Push message to all or selected devices( admin only, callable only from other socket )
+    file: push.js
+    parameters:
+      title:
+        type: string
+        description: title
+        example: Hello my users
+      body:
+        type: string
+        description: body
+        example: There is a new version available, please update
+      sound:
+        type: string
+        description: sound
+        example: default
+      devices:
+        type: array
+        description: Array of ids of expoDevice to sent push( if unset pushes are sent to everybody )
+        example: [1,5,7]
+      data:
+        type: object
+        description: data object included in push message
+        example: |
+          {
+            activatePromotion: true
+          }

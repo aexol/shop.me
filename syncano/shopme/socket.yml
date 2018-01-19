@@ -1,0 +1,173 @@
+name: shopme
+description: Description of shopme
+version: 0.0.1
+
+classes:
+  profile:
+    - name: user
+      type: reference
+      target: user
+      filter_index: true
+    - name: firstName
+      type: string
+      filter_index: true
+    - name: lastName
+      type: string
+      filter_index: true
+    - name: district
+      type: string
+      filter_index: true
+    - name: city
+      type: string
+      filter_index: true
+    - name: phone
+      type: string
+      filter_index: true
+  review:
+    - name: shopme
+      type: reference
+      target: shopme
+      filter_index: true
+    - name: rating
+      type: integer
+      filter_index: true
+  shopme:
+    - name: user
+      type: reference
+      target: user
+      filter_index: true
+    - name: description
+      type: text
+    - name: value
+      type: float
+    - name: status
+      type: string
+      filter_index: true
+    - name: district
+      type: string
+      filter_index: true
+    - name: city
+      type: string
+      filter_index: true
+  offer:
+    - name: shopme
+      type: reference
+      target: shopme
+      filter_index: true
+    - name: to
+      type: reference
+      target: user
+      filter_index: true
+    - name: user
+      type: reference
+      target: user
+      filter_index: true
+    - name: accepted
+      type: boolean
+      filter_index: true
+  
+endpoints:
+  register:
+    description: register new profile
+    file: register.js
+    parameters:
+      username:
+        type: string
+        description: username
+        example: username
+      password:
+        type: string
+        description: password
+        example: password
+      firstName:
+        type: string
+        description: firstName
+        example: firstName
+      lastName:
+        type: string
+        description: lastName
+        example: lastName
+      city:
+        type: string
+        description: city
+        example: city
+      district:
+        type: string
+        description: district
+        example: district
+      phone:
+        type: string
+        description: phone
+        example: phone
+  profile:
+    description: profile
+    file: profile.js
+  list:
+    description: list shopmes
+    file: listShopme.js
+  cities:
+    file: cities.js
+    description: cities
+  acceptOffer:
+    description: accept offer
+    file: person/acceptOffer.js
+    parameters:
+      offer:
+        type: integer
+        description: offer
+        example: 33
+  createShopme:
+    description: creates shopme
+    file: person/createShopme.js
+    parameters:
+      value:
+        type: integer
+        description: value
+        example: 33
+      description:
+        type: string
+        description: description
+        example: description
+  myShopmes:
+    description: my shopmes
+    file: person/myShopmes.js
+  offeredme:
+    description: see who offered to help with my shopmes
+    file: person/offeredme.js
+  rateOffer:
+    description: rate and complete shopme
+    file: person/rateOffer.js
+    parameters:
+      rating:
+        type: integer
+        description: rating
+        example: 33
+      shopme:
+        type: integer
+        description: shopme
+        example: 33
+  ioffered:
+    description: List my offers
+    file: shopper/ioffered.js
+  offer:
+    description: Offer to help with shopme
+    file: shopper/offer.js
+    parameters:
+      shopme:
+        type: integer
+        description: shopme
+        example: 33
+  realisingShopmes:
+    description: Shopmes I am realising
+    file: shopper/realisingShopmes.js
+  me:
+    description: me
+    file: me.js
+  getContact:
+    description: get contact between shopper and person
+    file: getContact.js
+    parameters:
+      shopme:
+        type: integer
+        description: shopme
+        example: 33

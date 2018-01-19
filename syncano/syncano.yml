@@ -1,0 +1,4 @@
+dependencies:
+  sockets:
+    rest-auth:
+      version: 0.0.15

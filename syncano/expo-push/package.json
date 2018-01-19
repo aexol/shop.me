@@ -1,0 +1,6 @@
+{
+  "license": "MIT",
+  "dependencies": {
+    "@syncano/core": "^0.5.0-alpha.8f8b83d9"
+  }
+}
